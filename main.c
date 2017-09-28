@@ -1,9 +1,11 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+
+#include "recv.c"
 
 #define PORT 21
 #define BANNER "220 (vsFTPd 2.3.4)\n"
@@ -48,6 +50,8 @@ int main(void)
         exit(-1);
     }
 
+    printf("Server runnig on port %i\n", PORT);
+
     while(1)
     {
         sin_size = sizeof(struct sockaddr_in);
@@ -59,14 +63,16 @@ int main(void)
             exit(-1);
         }
 
-        printf("[%s:%d]\n",inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port)); //Add to log
+        //printf("[%s:%d]\n",inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port)); //Add to log
+        log_data(inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port), "Connected\n");
         send(new_sockfd, BANNER, sizeof(BANNER), 0);
+        memset(&buffer, '\0', 1024);
         recv_length = recv(new_sockfd, &buffer, 1024, 0);
 
         while(recv_length > 0) {
             // Create cmp
-            printf("RECV: %d bytes\n", recv_length);
-            // Create log
+            log_data(inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port), buffer);
+            memset(&buffer, '\0', 1024);
             recv_length = recv(new_sockfd, &buffer, 1024, 0);
         }
 
