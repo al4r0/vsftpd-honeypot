@@ -6,8 +6,7 @@ Work on Linux for now.
 
 
 To do:
-    - [x] Principal socket
-    - [ ] Save the log in file
-    - [ ] Port 6200 socket
-    - [ ] Make compatible to others SO
-
+- [x] Principal socket
+- [ ] Save the log in file
+- [ ] Port 6200 socket
+- [ ] Make compatible to others SO
