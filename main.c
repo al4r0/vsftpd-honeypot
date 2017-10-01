@@ -70,7 +70,18 @@ int main(void)
         recv_length = recv(new_sockfd, &buffer, 1024, 0);
 
         while(recv_length > 0) {
-            // Create cmp
+            if(strcasestr(&buffer, "USER "))
+            {
+                send(new_sockfd, USER, sizeof(USER), 0);
+            }
+            else if(strcasestr(&buffer, "PASS "))
+            {
+                send(new_sockfd, PASS, sizeof(PASS), 0);
+            }
+            else
+            {
+                send(new_sockfd, LOGIN, sizeof(LOGIN), 0);
+            }
             log_data(inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port), buffer);
             memset(&buffer, '\0', 1024);
             recv_length = recv(new_sockfd, &buffer, 1024, 0);
