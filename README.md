@@ -7,7 +7,8 @@ Work on Linux for now.
 To do:
 - [x] Principal socket
 - [x] Save the log in file
-- [ ] Response to ftp commands
+- [x] Response to ftp commands
 - [ ] Port 6200 socket
+- [ ] Improve ftp answers
 - [ ] Make multithread
 - [ ] Make compatible to others SO
