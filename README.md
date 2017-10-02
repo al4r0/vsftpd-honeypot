@@ -8,6 +8,7 @@ To do:
 - [x] Principal socket
 - [x] Save the log in file
 - [x] Response to ftp commands
+- [ ] Add date in log
 - [ ] Port 6200 socket
 - [ ] Improve ftp answers
 - [ ] Make multithread
