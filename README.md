@@ -12,3 +12,8 @@ To do:
 - [ ] Improve ftp answers
 - [ ] Make multithread
 - [ ] Make compatible to others SO
+
+```
+In linux ports under 1024 need root.
+I use 21 and redirect to 2121 on the NAT of the gateway.
+```

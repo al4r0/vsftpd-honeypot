@@ -7,7 +7,7 @@
 
 #include "recv.c"
 
-#define PORT 21
+#define PORT 2121
 #define BANNER "220 (vsFTPd 2.3.4)\n"
 #define LOGIN "530 Please login with USER and PASS.\n"
 #define USER "331 User name OK, Enter PASS command\n"
